@@ -26,6 +26,10 @@ var fitbit = {
     },
 
     setStartDate : function(value) {
+        value.setHours(0);
+        value.setMinutes(0);
+        value.setSeconds(0);
+        value.setMilliseconds(0);
         this.startDate = value;
     },
 
