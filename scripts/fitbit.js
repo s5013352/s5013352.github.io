@@ -69,3 +69,5 @@ var fitbit = {
     processSteps : function(timeSeries) {
 
     }
+
+};
