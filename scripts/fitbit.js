@@ -47,8 +47,8 @@ var fitbit = {
                 mode: 'cors',
                 method: 'GET'
             }
-        ).then(processResponse)
-        .then(processSteps)
+        ).then(this.processResponse)
+        .then(this.processSteps)
         .catch(function(error) {
             console.log(error);
         });
