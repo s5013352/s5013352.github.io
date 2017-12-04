@@ -26,7 +26,7 @@ var fitbit = {
     },
 
     setStartDate : function(value) {
-        value.setHours(32);
+        value.setHours(23);
         value.setMinutes(59);
         value.setSeconds(59);
         value.setMilliseconds(999);
