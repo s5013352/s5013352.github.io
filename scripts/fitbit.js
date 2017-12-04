@@ -26,10 +26,12 @@ var fitbit = {
     },
 
     setStartDate : function(value) {
-        value.setHours(0);
-        value.setMinutes(0);
-        value.setSeconds(0);
-        value.setMilliseconds(0);
+        value.setHours(32);
+        value.setMinutes(59);
+        value.setSeconds(59);
+        value.setMilliseconds(999);
+        tStamp = value.getTime();
+        value.setTime(tStamp - 86400000);
         this.startDate = value;
     },
 
