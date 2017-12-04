@@ -42,7 +42,7 @@ var fitbit = {
             'https://api.fitbit.com/1/user/-/activities/steps/date/today/30d.json',
             {
                 headers: new Headers({
-                    'Authorization': 'Bearer ' + fitbitAccessToken
+                    'Authorization': 'Bearer ' + this.fitbitAccessToken
                 }),
                 mode: 'cors',
                 method: 'GET'
@@ -68,6 +68,7 @@ var fitbit = {
 
     processSteps : function(timeSeries) {
         console.log(timeSeries);
+
     }
 
 };
