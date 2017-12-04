@@ -22,7 +22,7 @@ var fitbit = {
             function($0, $1, $2, $3) { fragmentQueryParameters[$1] = $3; }
         );
 
-        fitbitAccessToken = fragmentQueryParameters.access_token;
+        this.fitbitAccessToken = fragmentQueryParameters.access_token;
     },
 
     setStartDate : function(value) {
@@ -48,7 +48,7 @@ var fitbit = {
                 method: 'GET'
             }
         ).then(processResponse)
-        //.then(processSteps)
+        .then(processSteps)
         .catch(function(error) {
             console.log(error);
         });
@@ -67,7 +67,7 @@ var fitbit = {
     },
 
     processSteps : function(timeSeries) {
-
+        console.log(timeSeries);
     }
 
 };
