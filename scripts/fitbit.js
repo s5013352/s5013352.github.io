@@ -78,14 +78,12 @@ var fitbit = {
         console.log("complete");
         console.log(this.lastReceivedTotalSteps);
 
-        var difference = 0;
-
         if(this.lastReceivedTotalSteps > this.lastKnownTotalSteps) {
-            difference = this.lastReceivedTotalSteps - this.lastKnownTotalSteps;
+            var difference = this.lastReceivedTotalSteps - this.lastKnownTotalSteps;
+            if(objects.list.oldAmulet.have == false) candies.setNbrOwned(candies.nbrOwned + difference);
+            else candies.setNbrOwned(candies.nbrOwned + candies.newCandies*3);
             this.lastKnownTotalSteps = this.lastReceivedTotalSteps;
         }
-
-        return difference;
 
     }
 

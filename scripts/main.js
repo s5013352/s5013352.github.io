@@ -102,10 +102,8 @@ var main = {
     },
     
     minInterval : function(){
-        // Candies
-        var newCandies = fitbit.callAPI();
-        if(objects.list.oldAmulet.have == false) candies.setNbrOwned(candies.nbrOwned + newCandies);
-        else candies.setNbrOwned(candies.nbrOwned + candies.newCandies*3);
+        // Update candies to be steps received from fitbit API
+        fitbit.callAPI();
 
         // Lollipop farm
         if(farm.productionDelayType == "min"){
