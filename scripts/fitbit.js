@@ -51,7 +51,7 @@ var fitbit = {
         //.then(processSteps)
         .catch(function(error) {
             console.log(error);
-        }
+        });
     },
 
     processResponse : function(res) {
