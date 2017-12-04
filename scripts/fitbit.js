@@ -60,11 +60,23 @@ var fitbit = {
             throw new Error('Fitbit API request failed: ' + res);
         }
         return res.json();
-        
+
     },
 
-    processSteps : function(timeSeries) {
-        console.log(timeSeries);
+    processSteps : function(json) {
+        console.log("raw JSON");
+        console.log(json);
+        this.lastReceivedTotalSteps = 0;
+
+        for(var i = 0; i < json.length; i++) {
+            var aDate = new Date(json[i].dateTime);
+            if(aDate.getTime() > this.startDate.getTime()) {
+                this.lastReceivedTotalSteps += Number(json[i].value);
+            }
+        }
+
+        console.log("complete");
+        console.log(setLastReceivedTotalSteps);
 
     }
 
