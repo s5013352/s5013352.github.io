@@ -34,6 +34,7 @@ var main = {
         sword.onload();
         cauldron.onload();
         tabs.onload();
+        fitbit.onload();
         
         // Loading after various loads
         quest.onloadAfter(); // This must be call after other loads because it needs the different quests to be loaded
