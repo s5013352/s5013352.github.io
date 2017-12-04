@@ -55,15 +55,12 @@ var fitbit = {
     },
 
     processResponse : function(res) {
+
         if (!res.ok) {
             throw new Error('Fitbit API request failed: ' + res);
         }
-
-        if (contentType && contentType.indexOf("application/json") !== -1) {
-            return res.json();
-        } else {
-            throw new Error('JSON expected but received ' + contentType);
-        }
+        return res.json();
+        
     },
 
     processSteps : function(timeSeries) {
