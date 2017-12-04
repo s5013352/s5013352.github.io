@@ -62,9 +62,6 @@ var main = {
     },
 
     secInterval : function(){
-        // Candies
-        if(objects.list.oldAmulet.have == false) candies.setNbrOwned(candies.nbrOwned + candies.candiesPerSecond);
-        else candies.setNbrOwned(candies.nbrOwned + candies.candiesPerSecond*3);
         
         // Quest tired time
         if(objects.list.pinkRing.have == false) quest.setTiredTime(quest.tiredTime - 1);
@@ -105,6 +102,11 @@ var main = {
     },
     
     minInterval : function(){
+        // Candies
+        var newCandies = fitbit.callAPI();
+        if(objects.list.oldAmulet.have == false) candies.setNbrOwned(candies.nbrOwned + newCandies);
+        else candies.setNbrOwned(candies.nbrOwned + candies.newCandies*3);
+
         // Lollipop farm
         if(farm.productionDelayType == "min"){
             if(objects.list.hornOfPlenty.have == false) lollipops.setNbrOwned(lollipops.nbrOwned + farm.lollipopsProduction);

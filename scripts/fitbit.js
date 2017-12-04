@@ -76,7 +76,16 @@ var fitbit = {
         }
 
         console.log("complete");
-        console.log(setLastReceivedTotalSteps);
+        console.log(this.lastReceivedTotalSteps);
+
+        var difference = 0;
+
+        if(this.lastReceivedTotalSteps > this.lastKnownTotalSteps) {
+            difference = this.lastReceivedTotalSteps - this.lastKnownTotalSteps;
+            this.lastKnownTotalSteps = this.lastReceivedTotalSteps;
+        }
+
+        return difference;
 
     }
 
