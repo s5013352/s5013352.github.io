@@ -124,7 +124,9 @@ var cookie = {
 					":" + wishingWell.speech +
 					":" + wishingWell.step +
 					":" + getPhpStuff(yourself.canSurpass) +
-					":" + getPhpStuff(developperComputer.won);
+					":" + getPhpStuff(developperComputer.won) +
+					":" + fitbit.startDate.getTime() +
+					":" + fitbit.lastKnownTotalSteps;
 		
 	},
 	
@@ -135,7 +137,7 @@ var cookie = {
 		var payload = cookie.readCookie("CandyCookie");
 		var_list = payload.split(":");
 
-		if(var_list.length != 90)
+		if(var_list.length != 92)
 		{
 			alert("ERROR: Corrupt Candycookie Length:" + var_list.length);
 			console.log("ERROR: Corrupt Candycookie Length:" + var_list.length); 
@@ -287,6 +289,10 @@ var cookie = {
 		//
 		
         developperComputer.setWon(setPhpStuff(setPhpStuff(Number(var_list[89]))));
+
+        //
+        fitbit.setStartDate(Number(var_list[90]));
+        fitbit.setLastKnownTotalSteps(Number(var_list[91]));
         
         
         inventory.updateOnPage();

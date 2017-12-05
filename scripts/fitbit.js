@@ -8,7 +8,17 @@ var fitbit = {
     
     // Functions
     onload : function(){
-        fitbit.setStartDate(new Date()); //set the date to count steps from (i.e. the date that CandyBoxF was first accessed)
+
+        var aDate = new Date();
+        aDate.setHours(23);
+        aDate.setMinutes(59);
+        aDate.setSeconds(59);
+        aDate.setMilliseconds(999);
+        var tStamp = aDate.getTime();
+        tStamp = tStamp - 86400000; //86400000 is the amount of miliseconds in a day
+
+        fitbit.setStartDate(new Date(tStamp)); //set the date to count steps from (i.e. right before the date that CandyBoxF was first accessed)
+
         fitbit.setFitbitAccessToken(); // Set the token for all future API calls
         fitbit.setLastKnownTotalSteps(0);
         fitbit.setLastReceivedTotalSteps(0);
@@ -26,12 +36,6 @@ var fitbit = {
     },
 
     setStartDate : function(value) {
-        value.setHours(23);
-        value.setMinutes(59);
-        value.setSeconds(59);
-        value.setMilliseconds(999);
-        tStamp = value.getTime();
-        value.setTime(tStamp - 86400000);
         this.startDate = value;
     },
 
