@@ -140,7 +140,8 @@ var cookie = {
 		if(var_list.length != 92)
 		{
 			alert("ERROR: Corrupt Candycookie Length:" + var_list.length);
-			console.log("ERROR: Corrupt Candycookie Length:" + var_list.length); 
+			console.log("ERROR: Corrupt Candycookie Length:" + var_list.length);
+			cookie.eraseCookie("CandyCookie");
 			return null;
 		}
 		
