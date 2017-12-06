@@ -80,15 +80,15 @@ var fitbit = {
 
         for(var i = 0; i < json.length; i++) {
             var aDate = new Date(json[i].dateTime);
+            console.log("*********");
+            console.log(i);
+            console.log(json[i].dateTime);
+            console.log(aDate);
+            console.log(json[i].value);
+            console.log(lastReceivedTotalSteps);
+            console.log("*********")
             if(aDate.getTime() > this.startDate.getTime()) {
                 this.lastReceivedTotalSteps += Number(json[i].value);
-                console.log("*********");
-                console.log(i);
-                console.log(json[i].dateTime);
-                console.log(aDate);
-                console.log(json[i].value);
-                console.log(lastReceivedTotalSteps);
-                console.log("*********")
             }
         }
 
