@@ -4,7 +4,6 @@ var fitbit = {
     fitbitAccessToken : "empty",
     startDate : new Date(),
     lastKnownTotalSteps : 0,
-    lastReceivedTotalSteps : 0,
     
     // Functions
     onload : function(){
@@ -21,7 +20,6 @@ var fitbit = {
 
         fitbit.setFitbitAccessToken(); // Set the token for all future API calls
         fitbit.setLastKnownTotalSteps(0);
-        fitbit.setLastReceivedTotalSteps(0);
     },
 
     setFitbitAccessToken : function() {
@@ -41,10 +39,6 @@ var fitbit = {
 
     setLastKnownTotalSteps : function(value) {
         this.lastKnownTotalSteps = value;
-    },
-
-    setLastReceivedTotalSteps : function(value) {
-        this.lastReceivedTotalSteps = value;
     },
 
     callAPI : function() {
@@ -76,20 +70,20 @@ var fitbit = {
     processSteps : function(json) {
 
         var aSteps = json['activities-steps']
-        fitbit.lastReceivedTotalSteps = 0;
+        var lastReceivedTotalSteps = 0;
 
         for(var i = 0; i < aSteps.length; i++) {
             var aDate = new Date(aSteps[i].dateTime);
             if(aDate.getTime() > fitbit.startDate.getTime()) {
-                fitbit.lastReceivedTotalSteps += Number(aSteps[i].value);
+                lastReceivedTotalSteps += Number(aSteps[i].value);
             }
         }
 
-        if(fitbit.lastReceivedTotalSteps > fitbit.lastKnownTotalSteps) {
-            var difference = fitbit.lastReceivedTotalSteps - fitbit.lastKnownTotalSteps;
+        if(lastReceivedTotalSteps > fitbit.lastKnownTotalSteps) {
+            var difference = lastReceivedTotalSteps - fitbit.lastKnownTotalSteps;
             if(objects.list.oldAmulet.have == false) candies.setNbrOwned(candies.nbrOwned + difference);
             else candies.setNbrOwned(candies.nbrOwned + candies.newCandies*3);
-            fitbit.lastKnownTotalSteps = fitbit.lastReceivedTotalSteps;
+            fitbit.lastKnownTotalSteps = lastReceivedTotalSteps;
         }
 
     }
