@@ -52,7 +52,7 @@ var fitbit = {
             'https://api.fitbit.com/1/user/-/activities/steps/date/today/30d.json',
             {
                 headers: new Headers({
-                    'Authorization': 'Bearer ' + this.fitbitAccessToken
+                    'Authorization': 'Bearer ' + fitbit.fitbitAccessToken
                 }),
                 mode: 'cors',
                 method: 'GET'
@@ -79,7 +79,7 @@ var fitbit = {
         console.log(json['activities-steps'].length);
         console.log(json);
         var aSteps = json['activities-steps']
-        this.lastReceivedTotalSteps = 0;
+        fitbit.lastReceivedTotalSteps = 0;
 
         for(var i = 0; i < aSteps.length; i++) {
             var aDate = new Date(aSteps[i].dateTime);
@@ -92,23 +92,23 @@ var fitbit = {
             console.log("---------");
             console.log(aDate);
             console.log(aDate.getTime());
-            console.log(this.startDate);
-            console.log(this.startDate.getTime());
+            console.log(fitbit.startDate);
+            console.log(fitbit.startDate.getTime());
             console.log("---------");
             console.log("*********")
-            if(aDate.getTime() > this.startDate.getTime()) {
-                this.lastReceivedTotalSteps += Number(aSteps.value);
+            if(aDate.getTime() > fitbit.startDate.getTime()) {
+                fitbit.lastReceivedTotalSteps += Number(aSteps.value);
             }
         }
 
         console.log("complete");
-        console.log(this.lastReceivedTotalSteps);
+        console.log(fitbit.lastReceivedTotalSteps);
 
-        if(this.lastReceivedTotalSteps > this.lastKnownTotalSteps) {
-            var difference = this.lastReceivedTotalSteps - this.lastKnownTotalSteps;
+        if(fitbit.lastReceivedTotalSteps > fitbit.lastKnownTotalSteps) {
+            var difference = fitbit.lastReceivedTotalSteps - fitbit.lastKnownTotalSteps;
             if(objects.list.oldAmulet.have == false) candies.setNbrOwned(candies.nbrOwned + difference);
             else candies.setNbrOwned(candies.nbrOwned + candies.newCandies*3);
-            this.lastKnownTotalSteps = this.lastReceivedTotalSteps;
+            fitbit.lastKnownTotalSteps = fitbit.lastReceivedTotalSteps;
         }
 
     }
