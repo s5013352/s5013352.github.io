@@ -98,6 +98,7 @@ var fitbit = {
             console.log("*********")
             if(aDate.getTime() > fitbit.startDate.getTime()) {
                 var aNumber = Number(aSteps.value);
+                console.log(aNumber);
                 fitbit.lastReceivedTotalSteps = fitbit.lastReceivedTotalSteps + aNumber;
             }
         }
