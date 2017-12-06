@@ -74,37 +74,16 @@ var fitbit = {
     },
 
     processSteps : function(json) {
-        console.log("raw JSON");
-        console.log(json.length);
-        console.log(json['activities-steps'].length);
-        console.log(json);
+
         var aSteps = json['activities-steps']
         fitbit.lastReceivedTotalSteps = 0;
 
         for(var i = 0; i < aSteps.length; i++) {
             var aDate = new Date(aSteps[i].dateTime);
-            console.log("*********");
-            console.log(i);
-            console.log(aSteps[i].dateTime);
-            console.log(aDate);
-            console.log(aSteps[i].value);
-            console.log(fitbit.lastReceivedTotalSteps);
-            console.log("---------");
-            console.log(aDate);
-            console.log(aDate.getTime());
-            console.log(fitbit.startDate);
-            console.log(fitbit.startDate.getTime());
-            console.log("---------");
-            console.log("*********")
             if(aDate.getTime() > fitbit.startDate.getTime()) {
-                var aNumber = Number(aSteps[i].value);
-                console.log(aNumber);
-                fitbit.lastReceivedTotalSteps = fitbit.lastReceivedTotalSteps + aNumber;
+                fitbit.lastReceivedTotalSteps += Number(aSteps[i].value);
             }
         }
-
-        console.log("complete");
-        console.log(fitbit.lastReceivedTotalSteps);
 
         if(fitbit.lastReceivedTotalSteps > fitbit.lastKnownTotalSteps) {
             var difference = fitbit.lastReceivedTotalSteps - fitbit.lastKnownTotalSteps;
