@@ -76,7 +76,7 @@ var fitbit = {
     processSteps : function(json) {
         console.log("raw JSON");
         console.log(json.length);
-        console.log(json.activities-steps.length);
+        console.log(json['activities-steps'].length);
         console.log(json);
         this.lastReceivedTotalSteps = 0;
 
