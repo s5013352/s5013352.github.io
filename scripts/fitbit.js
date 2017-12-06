@@ -78,19 +78,20 @@ var fitbit = {
         console.log(json.length);
         console.log(json['activities-steps'].length);
         console.log(json);
+        var aSteps = json['activities-steps']
         this.lastReceivedTotalSteps = 0;
 
-        for(var i = 0; i < json.activities-steps.length; i++) {
-            var aDate = new Date(json.activities-steps[i].dateTime);
+        for(var i = 0; i < aSteps.length; i++) {
+            var aDate = new Date(aSteps[i].dateTime);
             console.log("*********");
             console.log(i);
-            console.log(json.activities-steps[i].dateTime);
+            console.log(aSteps[i].dateTime);
             console.log(aDate);
-            console.log(json.activities-steps[i].value);
+            console.log(aSteps[i].value);
             console.log(lastReceivedTotalSteps);
             console.log("*********")
             if(aDate.getTime() > this.startDate.getTime()) {
-                this.lastReceivedTotalSteps += Number(json.activities-steps[i].value);
+                this.lastReceivedTotalSteps += Number(aSteps.value);
             }
         }
 
