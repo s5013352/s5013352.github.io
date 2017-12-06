@@ -88,7 +88,7 @@ var fitbit = {
             console.log(aSteps[i].dateTime);
             console.log(aDate);
             console.log(aSteps[i].value);
-            console.log(lastReceivedTotalSteps);
+            console.log(fitbit.lastReceivedTotalSteps);
             console.log("---------");
             console.log(aDate);
             console.log(aDate.getTime());
