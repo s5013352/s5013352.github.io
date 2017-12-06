@@ -39,10 +39,6 @@ var fitbit = {
         this.startDate = value;
     },
 
-    getStartDate : function() {
-        return this.startDate.getTime();
-    },
-
     setLastKnownTotalSteps : function(value) {
         this.lastKnownTotalSteps = value;
     },
