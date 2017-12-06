@@ -125,7 +125,7 @@ var cookie = {
 					":" + wishingWell.step +
 					":" + getPhpStuff(yourself.canSurpass) +
 					":" + getPhpStuff(developperComputer.won) +
-					":" + fitbit.getStartDate() +
+					":" + fitbit.startDate.getTime() +
 					":" + fitbit.lastKnownTotalSteps;
 		
 	},
@@ -292,7 +292,7 @@ var cookie = {
         developperComputer.setWon(setPhpStuff(setPhpStuff(Number(var_list[89]))));
 
         //
-        fitbit.setStartDate(Number(var_list[90]));
+        fitbit.setStartDate(new Date(Number(var_list[90])));
         fitbit.setLastKnownTotalSteps(Number(var_list[91]));
         
         
