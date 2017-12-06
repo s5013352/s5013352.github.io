@@ -97,7 +97,8 @@ var fitbit = {
             console.log("---------");
             console.log("*********")
             if(aDate.getTime() > fitbit.startDate.getTime()) {
-                fitbit.lastReceivedTotalSteps += Number(aSteps.value);
+                var aNumber = Number(aSteps.value);
+                fitbit.lastReceivedTotalSteps = fitbit.lastReceivedTotalSteps + aNumber;
             }
         }
 
