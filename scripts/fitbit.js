@@ -86,6 +86,42 @@ var fitbit = {
             fitbit.lastKnownTotalSteps = lastReceivedTotalSteps;
         }
 
-    }
+    },
+
+    initialCallAPI : function() {
+        fetch(
+            'https://api.fitbit.com/1/user/-/activities/steps/date/today/30d.json',
+            {
+                headers: new Headers({
+                    'Authorization': 'Bearer ' + fitbit.fitbitAccessToken
+                }),
+                mode: 'cors',
+                method: 'GET'
+            }
+        ).then(fitbit.processResponse)
+        .then(fitbit.initialProcessSteps)
+        .catch(function(error) {
+            console.log(error);
+        });
+    },
+
+    initialProcessSteps : function(json) {
+
+        var aSteps = json['activities-steps']
+        var lastReceivedTotalSteps = 0;
+
+        for(var i = 0; i < aSteps.length; i++) {
+            var aDate = new Date(aSteps[i].dateTime);
+            if(aDate.getTime() > fitbit.startDate.getTime()) {
+                lastReceivedTotalSteps += Number(aSteps[i].value);
+            }
+        }
+
+        fitbit.lastKnownTotalSteps = lastReceivedTotalSteps;
+
+        console.log("INFO: Initial setup complete, known steps set too:");
+        console.log(lastReceivedTotalSteps);
+
+    },
 
 };

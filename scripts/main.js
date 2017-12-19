@@ -47,6 +47,9 @@ var main = {
 		else
 		{
 			console.log("INFO: Couldn't find a Cookie.");
+            console.log("INFO: Running initial setup");
+            fitbit.initialCallAPI();
+            
 		}
 		
                         
