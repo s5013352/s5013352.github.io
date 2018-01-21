@@ -28,8 +28,10 @@ var candies = {
         }
         
         this.nbrOwned = value;
-        if(this.nbrOwned != 1) htmlInteraction.setInnerHtml("candies", "You have " + this.nbrOwned + " candies!");
-        else htmlInteraction.setInnerHtml("candies", "You have 1 candy!");
+        if(this.nbrOwned == 0) {htmlInteraction.setInnerHtml("candies", "You have 0 candies! Try taking a few steps, then sync your fitbit with your phone");}
+        else if (this.nbrOwned == 1) {htmlInteraction.setInnerHtml("candies", "You have 1 candy!");}
+        else {htmlInteraction.setInnerHtml("candies", "You have " + this.nbrOwned + " candies!"); }
+        
         buttons.checkCandies();
         shop.check();
         cauldron.updateActionsInfoOnPage();
